@@ -12,6 +12,7 @@ return {
       local cmp = require("cmp")
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<Tab><Tab>"] = cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -36,6 +37,14 @@ return {
           end
         end, { "i", "s" }),
       })
+    end,
+  },
+
+  -- disable diagnostics virtual_text
+  {
+    "neovim/nvim-lspconfig",
+    opts = function(_, opts)
+      opts.diagnostics.virtual_text = false
     end,
   },
 }
