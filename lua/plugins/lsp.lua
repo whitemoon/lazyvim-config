@@ -4,8 +4,6 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
-        "shellcheck",
-        "shfmt",
       },
       github = {
         download_url_template = "https://ghproxy.com/https://github.com/%s/releases/download/%s/%s",
@@ -28,7 +26,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "bash",
         "help",
         "json",
         "lua",
@@ -59,4 +56,5 @@ return {
   { import = "plugins.extras.lang.rust" },
   { import = "plugins.extras.lang.clangd" },
   { import = "plugins.extras.lang.python" },
+  { import = "plugins.extras.lang.bash" },
 }

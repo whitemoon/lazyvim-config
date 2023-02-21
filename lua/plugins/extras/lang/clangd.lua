@@ -7,7 +7,7 @@ return {
     end,
   },
 
-  -- add rust to null-ls
+  -- add clang_format to null-ls
   {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
