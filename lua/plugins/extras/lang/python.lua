@@ -7,6 +7,23 @@ return {
     end,
   },
 
+  -- correctly setup mason lsp / dap extensions
+  {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, { "black" })
+    end,
+  },
+
+  -- add python to null-ls
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      vim.list_extend(opts.sources, { nls.builtins.formatting.black })
+    end,
+  },
+
   {
     "neovim/nvim-lspconfig",
     opts = {

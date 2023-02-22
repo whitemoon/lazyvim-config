@@ -1,11 +1,11 @@
 return {
   "nvim-neotest/neotest",
-  event = "BufEnter",
+  event = "VeryLazy",
   dependencies = {
     "nvim-neotest/neotest-python",
     "rouge8/neotest-rust",
   },
-  config = function()
+  opts = function(_, opts)
     -- get neotest namespace (api call creates or returns namespace)
     local neotest_ns = vim.api.nvim_create_namespace("neotest")
     vim.diagnostic.config({
@@ -16,14 +16,12 @@ return {
         end,
       },
     }, neotest_ns)
-    require("neotest").setup({
-      adapters = {
-        require("neotest-python")({
-          dap = { justMyCode = false },
-        }),
-        require("neotest-rust"),
-      },
-    })
+    opts.adapters = {
+      require("neotest-rust"),
+      require("neotest-python")({
+        dap = { justMyCode = false, console = "integratedTerminal" },
+      }),
+    }
   end,
   init = function()
     require("which-key").register({

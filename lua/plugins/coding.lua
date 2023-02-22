@@ -12,7 +12,6 @@ return {
       local cmp = require("cmp")
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<Tab><Tab>"] = cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -43,6 +42,12 @@ return {
   -- disable diagnostics virtual_text
   {
     "neovim/nvim-lspconfig",
+    init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      -- add keymaps
+      keys[#keys + 1] = { "ga", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
+      keys[#keys + 1] = { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" }
+    end,
     opts = function(_, opts)
       opts.diagnostics.virtual_text = false
     end,
