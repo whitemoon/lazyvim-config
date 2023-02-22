@@ -14,3 +14,13 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.tabstop = 2
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = augroup("user_markdown"),
+  pattern = "*.md",
+  desc = "beautify markdown",
+  callback = function()
+    vim.cmd([[set syntax=markdown]])
+    require("utils.markdown_syn").set_syntax()
+  end,
+})
