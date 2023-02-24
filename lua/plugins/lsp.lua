@@ -4,6 +4,7 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
+        "prettierd",
       },
       github = {
         download_url_template = "https://ghproxy.com/https://github.com/%s/releases/download/%s/%s",
@@ -46,7 +47,7 @@ return {
       local nls = require("null-ls")
       return {
         sources = {
-          -- nls.builtins.formatting.prettierd,
+          nls.builtins.formatting.prettierd,
           nls.builtins.formatting.stylua,
         },
       }

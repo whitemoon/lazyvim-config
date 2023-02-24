@@ -48,13 +48,6 @@ return {
       keys[#keys + 1] = { "ga", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
       keys[#keys + 1] = { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" }
       keys[#keys + 1] = { "gh", vim.lsp.buf.signature_help, mode = "n", desc = "Signature Help", has = "signatureHelp" }
-      keys[#keys + 1] = { "<c-j>", "<Down>", mode = "i" }
-      keys[#keys + 1] = { "<c-k>", "<Up>", mode = "i" }
-      keys[#keys + 1] = { "<c-h>", "<Left>", mode = "i" }
-      keys[#keys + 1] = { "<c-l>", "<Right>", mode = "i" }
-      keys[#keys + 1] = { "<c-a>", "<Home>", mode = { "i", "n" } }
-      keys[#keys + 1] = { "<c-e>", "<End>", mode = { "i", "n" } }
-      keys[#keys + 1] = { "jk", "<esc>", mode = "i" }
     end,
     opts = function(_, opts)
       opts.diagnostics.virtual_text = false
