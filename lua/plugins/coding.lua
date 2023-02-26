@@ -79,6 +79,7 @@ return {
       -- It also supports tagstack
       -- Use <C-t> to jump back
       keys[#keys + 1] = { "gd", "<cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "Peek Definition" }
+      keys[#keys + 1] = { "gD", "<cmd>Lspsaga goto_definition<CR>", mode = "n", desc = "Goto Definition" }
 
       -- Peek type definition
       -- You can edit the file containing the type definition in the floating window
@@ -86,6 +87,7 @@ return {
       -- It also supports tagstack
       -- Use <C-t> to jump back
       keys[#keys + 1] = { "gt", "<cmd>Lspsaga peek_type_definition<CR>", mode = "n", desc = "Peek Type Definition" }
+      keys[#keys + 1] = { "gT", "<cmd>Lspsaga goto_type_definition<CR>", mode = "n", desc = "Goto Type Definition" }
 
       -- Show line diagnostics
       -- You can pass argument ++unfocus to
