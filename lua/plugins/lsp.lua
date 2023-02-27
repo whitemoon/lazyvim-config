@@ -12,17 +12,6 @@ return {
     },
   },
 
-  -- neodev
-  {
-    "folke/neodev.nvim",
-    opts = {
-      debug = true,
-      experimental = {
-        pathStrict = true,
-      },
-    },
-  },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
