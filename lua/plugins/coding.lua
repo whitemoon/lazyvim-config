@@ -51,15 +51,13 @@ return {
   {
     "glepnir/lspsaga.nvim",
     event = "BufRead",
-    config = function()
-      require("lspsaga").setup({})
-    end,
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
       --Please make sure you install markdown and markdown_inline parser
       { "nvim-treesitter/nvim-treesitter" },
     },
     init = function()
+      require("lspsaga").setup({})
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- LSP finder - Find the symbol's definition
       -- If there is no definition, it will instead be hidden

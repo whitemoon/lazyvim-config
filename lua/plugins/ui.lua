@@ -1,5 +1,18 @@
 return {
   {
+    "rcarriga/nvim-notify",
+    opts = {
+      background_colour = "#000000",
+    },
+  },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   opts = {
+  --     transparent_background = true,
+  --   },
+  -- },
+  {
     "folke/tokyonight.nvim",
     opts = {
       transparent = true,
@@ -10,9 +23,9 @@ return {
     },
   },
   {
-    "rcarriga/nvim-notify",
+    "LazyVim/LazyVim",
     opts = {
-      background_colour = "#000000",
+      colorscheme = "tokyonight",
     },
   },
 }

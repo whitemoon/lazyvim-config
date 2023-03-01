@@ -9,3 +9,6 @@ vim.keymap.set("i", "<c-l>", "<Right>")
 vim.keymap.set({ "i", "n" }, "<c-a>", "<Home>")
 vim.keymap.set({ "i", "n" }, "<c-e>", "<End>")
 vim.keymap.set("i", "jk", "<esc>")
+
+-- search for visual mode selected
+vim.keymap.set("v", "/", 'y/<c-r>"<cr>')
