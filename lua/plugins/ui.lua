@@ -28,4 +28,12 @@ return {
       colorscheme = "tokyonight",
     },
   },
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function(_, opts)
+      vim.list_extend(opts.sections.lualine_x, { "encoding", "fileformat" })
+      opts.sections.lualine_z = { "os.date()" }
+    end,
+  },
 }
