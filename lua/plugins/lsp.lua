@@ -19,6 +19,7 @@ return {
         "help",
         "json",
         "lua",
+        "luap",
         "markdown",
         "markdown_inline",
         "regex",

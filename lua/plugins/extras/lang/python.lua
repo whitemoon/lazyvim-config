@@ -30,19 +30,19 @@ return {
       -- make sure mason installs the server
       servers = {
         pyright = {
-          settings = {
-            pyright = {
-              disableLanguageServices = false,
-              disableOrganizeImports = false,
-            },
-            python = {
-              analysis = {
-                autoSearchPaths = true,
-                diagnosticMode = "workspace",
-                useLibraryCodeForTypes = true,
-              },
-            },
-          },
+          -- settings = {
+          --   pyright = {
+          --     disableLanguageServices = false,
+          --     disableOrganizeImports = false,
+          --   },
+          --   python = {
+          --     analysis = {
+          --       autoSearchPaths = true,
+          --       diagnosticMode = "workspace",
+          --       useLibraryCodeForTypes = true,
+          --     },
+          --   },
+          -- },
           single_file_support = true,
           root_dir = function(fname)
             local util = require("lspconfig.util")

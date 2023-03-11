@@ -39,7 +39,7 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "codelldb", "rust-analyzer", "taplo" })
+      vim.list_extend(opts.ensure_installed, { "codelldb", "taplo" })
     end,
   },
 
@@ -50,18 +50,20 @@ return {
     opts = {
       -- make sure mason installs the server
       servers = {
-        rust_analyzer = {},
+        rust_analyzer = {
+          mason = false,
+        },
       },
       setup = {
         rust_analyzer = function(_, opts)
-						--     require("lazyvim.util").on_attach(function(client, buffer)
-						-- -- stylua: ignore
-						-- if client.name == "rust_analyzer" then
-						-- 	vim.keymap.set("n", "K", "<cmd>RustHoverActions<cr>", { buffer = buffer, desc = "Hover Actions (Rust)" })
-						-- 	vim.keymap.set("n", "<leader>cR", "<cmd>RustCodeAction<cr>", { buffer = buffer, desc = "Code Action (Rust)" })
-						-- 	vim.keymap.set("n", "<leader>dr", "<cmd>RustDebuggables<cr>", { buffer = buffer, desc = "Run Debuggables (Rust)" })
-						-- end
-						--     end)
+          --     require("lazyvim.util").on_attach(function(client, buffer)
+          -- -- stylua: ignore
+          -- if client.name == "rust_analyzer" then
+          -- 	vim.keymap.set("n", "K", "<cmd>RustHoverActions<cr>", { buffer = buffer, desc = "Hover Actions (Rust)" })
+          -- 	vim.keymap.set("n", "<leader>cR", "<cmd>RustCodeAction<cr>", { buffer = buffer, desc = "Code Action (Rust)" })
+          -- 	vim.keymap.set("n", "<leader>dr", "<cmd>RustDebuggables<cr>", { buffer = buffer, desc = "Run Debuggables (Rust)" })
+          -- end
+          --     end)
           local mason_registry = require("mason-registry")
           -- rust tools configuration for debugging support
           local codelldb = mason_registry.get_package("codelldb")
@@ -79,7 +81,7 @@ return {
                 border = "none",
               },
               inlay_hints = {
-                auto = false,
+                auto = true,
                 show_parameter_hints = true,
               },
               --       on_initialized = function()

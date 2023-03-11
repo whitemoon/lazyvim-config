@@ -7,14 +7,6 @@ return {
     end,
   },
 
-  -- correctly setup mason lsp / dap extensions
-  {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "shfmt", "shellcheck" })
-    end,
-  },
-
   -- add bash to null-ls
   {
     "jose-elias-alvarez/null-ls.nvim",

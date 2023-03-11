@@ -133,20 +133,19 @@ return {
       keys[#keys + 1] = { "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", mode = "n", desc = "Call Outgoing" }
 
       -- Floating terminal
-      keys[#keys + 1] = { "<A-d>", "<cmd>Lspsaga term_toggle<CR>", mode = { "n", "t" }, desc = "Float Terminal" }
+      keys[#keys + 1] = { "<Leader>ot", "<cmd>Lspsaga term_toggle<CR>", mode = { "n", "t" }, desc = "Float Terminal" }
     end,
   },
   {
-    "echasnovski/mini.pairs",
-    opts = {
-      mappings = {
-        ["("] = { action = "open", pair = "()", neigh_pattern = "[%c%p]" },
-        ["["] = { action = "open", pair = "[]", neigh_pattern = "[%c%p]" },
-        ["{"] = { action = "open", pair = "{}", neigh_pattern = "[%c%p]" },
-        ['"'] = { action = "closeopen", pair = '""', neigh_pattern = "[%c%p]", register = { cr = false } },
-        ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[%c%p]", register = { cr = false } },
-        ["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[%c%p]", register = { cr = false } },
-      },
+    "windwp/nvim-autopairs",
+    event = "VeryLazy",
+    dependencies = {
+      { "hrsh7th/nvim-cmp" },
     },
+    opts = function(_, opts)
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      local cmp = require("cmp")
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    end,
   },
 }
