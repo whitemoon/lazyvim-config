@@ -84,15 +84,6 @@ return {
                 auto = true,
                 show_parameter_hints = true,
               },
-              --       on_initialized = function()
-              --         vim.cmd([[
-              -- 	augroup RustLSP
-              -- 		autocmd CursorHold                      *.rs silent! lua vim.lsp.buf.document_highlight()
-              -- 		autocmd CursorMoved,InsertEnter         *.rs silent! lua vim.lsp.buf.clear_references()
-              -- 		autocmd BufEnter,CursorHold,InsertLeave *.rs silent! lua vim.lsp.codelens.refresh()
-              -- 	augroup END
-              -- ]])
-              --       end,
             },
             server = {
               settings = {
