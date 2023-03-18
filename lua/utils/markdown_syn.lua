@@ -1,7 +1,7 @@
 local M = {}
 
 M.set_syntax = function()
-  vim.cmd [[
+  vim.cmd([[
 runtime! syntax/html.vim
 
 if exists('b:current_syntax')
@@ -139,7 +139,7 @@ syn match mdCancelMark "- X" contained containedin=mdCancelledTask conceal cchar
 syn match mdContext "@[^ ]*" containedin=ALL
 
 " syn match mdItem "^ *[\*-]\( X \| \[[x ]\]\)\@! " contains=mdBullet
-syn match mdItem "^ *[\*-] .+" contains=mdBullet
+syn match mdItem "^ *[\*-] " contains=mdBullet
 syn match mdBullet "[\*-]" contained containedin=mdItem conceal cchar=●
 syn region mdIgnore start="\S\@<=\$\|\$\S\@=" end="\S\@<=\$\|\$\S\@=" keepend oneline concealends
 
@@ -158,7 +158,7 @@ let b:current_syntax = "mkd"
 
 delcommand HtmlHiLink
 " vim: ts=8
-]]
+]])
 end
 
 return M

@@ -1,6 +1,6 @@
 return {
   "nvim-neotest/neotest",
-  event = "VeryLazy",
+  ft = { "rust", "python" },
   dependencies = {
     "nvim-neotest/neotest-python",
     "rouge8/neotest-rust",

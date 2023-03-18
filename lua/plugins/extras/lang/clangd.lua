@@ -19,48 +19,46 @@ return {
   -- correctly setup lspconfig for clangd
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "p00f/clangd_extensions.nvim",
-      dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
-      },
-    },
     opts = {
       -- make sure mason installs the server
       servers = {
-        clangd = {},
-      },
-      setup = {
-        clangd = function(_, opts)
-          opts.capabilities.offsetEncoding = { "utf-16" }
-          require("clangd_extensions").setup({
-            server = opts,
-            extensions = {
-              ast = {
-                --These require codicons (https://github.com/microsoft/vscode-codicons)
-                role_icons = {
-                  type = "",
-                  declaration = "",
-                  expression = "",
-                  specifier = "",
-                  statement = "",
-                  ["template argument"] = "",
-                },
-                kind_icons = {
-                  Compound = "",
-                  Recovery = "",
-                  TranslationUnit = "",
-                  PackExpansion = "",
-                  TemplateTypeParm = "",
-                  TemplateTemplateParm = "",
-                  TemplateParamObject = "",
-                },
-              },
-            },
-          })
-          return true
-        end,
+        clangd = {
+          mason = false,
+        },
       },
     },
+  },
+  {
+    "p00f/clangd_extensions.nvim",
+    ft = { "c", "cpp" },
+    dependencies = {
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "neovim/nvim-lspconfig" },
+    },
+    opts = function(_, opts)
+      opts.server = { capabilities = { offsetEncoding = { "utf-16" } } }
+      opts.extensions = {
+        ast = {
+          --These require codicons (https://github.com/microsoft/vscode-codicons)
+          role_icons = {
+            type = "",
+            declaration = "",
+            expression = "",
+            specifier = "",
+            statement = "",
+            ["template argument"] = "",
+          },
+          kind_icons = {
+            Compound = "",
+            Recovery = "",
+            TranslationUnit = "",
+            PackExpansion = "",
+            TemplateTypeParm = "",
+            TemplateTemplateParm = "",
+            TemplateParamObject = "",
+          },
+        },
+      }
+    end,
   },
 }

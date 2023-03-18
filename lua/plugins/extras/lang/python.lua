@@ -7,14 +7,6 @@ return {
     end,
   },
 
-  -- correctly setup mason lsp / dap extensions
-  {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "black" })
-    end,
-  },
-
   -- add python to null-ls
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -30,6 +22,7 @@ return {
       -- make sure mason installs the server
       servers = {
         pyright = {
+          mason = false,
           -- settings = {
           --   pyright = {
           --     disableLanguageServices = false,
