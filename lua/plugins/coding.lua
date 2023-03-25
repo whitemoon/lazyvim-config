@@ -11,8 +11,27 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
       local neogen = require("neogen")
+      local compare = cmp.config.compare
+
+      opts.sorting = {
+        priority_weight = 2,
+        comparators = {
+          compare.offset,
+          compare.exact,
+          compare.score,
+          compare.recently_used,
+          compare.locality,
+          compare.kind,
+          compare.length,
+          compare.order,
+        },
+      }
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<CR>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+        }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -131,7 +150,7 @@ return {
       -- Note that if you use hover with ++keep, pressing this key again will
       -- close the hover window. If you want to jump to the hover window
       -- you should use the wincmd command "<C-w>w"
-      keys[#keys + 1] = { "K", "<cmd>Lspsaga hover_doc ++keep<CR>", mode = "n", desc = "Hover Doc" }
+      keys[#keys + 1] = { "K", "<cmd>Lspsaga hover_doc<CR>", mode = "n", desc = "Hover Doc" }
 
       -- Call hierarchy
       keys[#keys + 1] = { "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", mode = "n", desc = "Call Incoming" }
@@ -141,6 +160,7 @@ return {
       keys[#keys + 1] = { "<Leader>ot", "<cmd>Lspsaga term_toggle<CR>", mode = { "n", "t" }, desc = "Float Terminal" }
     end,
   },
+
   {
     "windwp/nvim-autopairs",
     event = "VeryLazy",

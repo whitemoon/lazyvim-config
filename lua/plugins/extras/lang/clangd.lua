@@ -24,6 +24,7 @@ return {
       servers = {
         clangd = {
           mason = false,
+          filetypes = { "c", "cpp" },
         },
       },
     },

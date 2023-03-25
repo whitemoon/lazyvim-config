@@ -5,13 +5,13 @@ return {
       background_colour = "#000000",
     },
   },
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   opts = {
-  --     transparent_background = true,
-  --   },
-  -- },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = {
+      transparent_background = true,
+    },
+  },
   {
     "folke/tokyonight.nvim",
     opts = {
@@ -23,9 +23,15 @@ return {
     },
   },
   {
+    "rebelot/kanagawa.nvim",
+    opts = function(_, opts)
+      opts.transparent = true
+    end,
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "kanagawa",
     },
   },
   {

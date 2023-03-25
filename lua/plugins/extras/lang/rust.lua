@@ -50,6 +50,7 @@ return {
       servers = {
         rust_analyzer = {
           mason = false,
+          filetypes = { "rust" },
         },
         taplo = {},
       },

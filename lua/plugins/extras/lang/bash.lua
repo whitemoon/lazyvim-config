@@ -22,7 +22,9 @@ return {
     opts = {
       -- make sure mason installs the server
       servers = {
-        bashls = {},
+        bashls = {
+          filetypes = { "bash" },
+        },
       },
     },
   },
