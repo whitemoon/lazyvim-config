@@ -3,15 +3,10 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     cmd = "Neotree",
-    init = function()
-      vim.g.neo_tree_remove_legacy_commands = true
-    end,
     opts = function(_, opts)
+      vim.g.neo_tree_remove_legacy_commands = true
       -- TODO move after neo-tree improves (https://github.com/nvim-neo-tree/neo-tree.nvim/issues/707)
       local global_commands = {
-        system_open = function(state)
-          require("astronvim.utils").system_open(state.tree:get_node():get_id())
-        end,
         parent_or_close = function(state)
           local node = state.tree:get_node()
           if (node.type == "directory" or node:has_children()) and node:is_expanded() then
@@ -75,7 +70,6 @@ return {
           ["[b"] = "prev_source",
           ["]b"] = "next_source",
           o = "open",
-          O = "system_open",
           h = "parent_or_close",
           l = "child_or_open",
           Y = "copy_selector",
@@ -104,7 +98,6 @@ return {
         "<leader>fe",
         function()
           require("neo-tree.command").execute({
-            position = "float",
             toggle = true,
             dir = require("lazyvim.util").get_root(),
           })
@@ -114,7 +107,7 @@ return {
       {
         "<leader>fE",
         function()
-          require("neo-tree.command").execute({ position = "float", toggle = true, dir = vim.loop.cwd() })
+          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
         end,
         desc = "Explorer NeoTree (cwd)",
       },

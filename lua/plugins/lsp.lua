@@ -5,6 +5,9 @@ return {
       ensure_installed = {
         "stylua",
         "prettierd",
+
+        -- debug
+        "codelldb",
       },
       github = {
         download_url_template = "https://ghproxy.com/https://github.com/%s/releases/download/%s/%s",
@@ -25,6 +28,17 @@ return {
         "regex",
         "vim",
         "yaml",
+
+        -- rust
+        "rust",
+        "toml",
+        -- bash
+        "bash",
+        -- c/cpp
+        "c",
+        "cpp",
+        -- python
+        "python",
       },
     },
   },
@@ -39,13 +53,16 @@ return {
         sources = {
           nls.builtins.formatting.prettierd,
           nls.builtins.formatting.stylua,
+          -- rust
+          nls.builtins.formatting.rustfmt,
+          -- bash
+          nls.builtins.formatting.shfmt,
+          -- clang-format
+          nls.builtins.formatting.clang_format,
+          -- python
+          nls.builtins.formatting.black,
         },
       }
     end,
   },
-
-  { import = "plugins.extras.lang.rust" },
-  { import = "plugins.extras.lang.clangd" },
-  { import = "plugins.extras.lang.python" },
-  { import = "plugins.extras.lang.bash" },
 }

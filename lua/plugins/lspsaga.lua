@@ -1,80 +1,8 @@
 return {
   {
-    "hrsh7th/nvim-cmp",
-    opts = function(_, opts)
-      local has_words_before = function()
-        unpack = unpack or table.unpack
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-      end
-
-      local luasnip = require("luasnip")
-      local cmp = require("cmp")
-      local neogen = require("neogen")
-      local compare = cmp.config.compare
-
-      opts.sorting = {
-        priority_weight = 2,
-        comparators = {
-          compare.offset,
-          compare.exact,
-          compare.score,
-          compare.recently_used,
-          compare.locality,
-          compare.kind,
-          compare.length,
-          compare.order,
-        },
-      }
-
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<CR>"] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-            -- they way you will only jump inside the snippet region
-            -- elseif luasnip.expand_or_jumpable() then
-          elseif luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
-          elseif neogen.jumpable() then
-            neogen.jump_next()
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          elseif neogen.jumpable(true) then
-            neogen.jump_prev()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      })
-    end,
-  },
-
-  -- disable diagnostics virtual_text
-  {
-    "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      opts.diagnostics.virtual_text = false
-      opts.autoformat = false
-    end,
-  },
-
-  {
     "glepnir/lspsaga.nvim",
     event = "BufRead",
+    cmd = { "Lspsaga" },
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
       --Please make sure you install markdown and markdown_inline parser
@@ -158,43 +86,6 @@ return {
 
       -- Floating terminal
       keys[#keys + 1] = { "<Leader>ot", "<cmd>Lspsaga term_toggle<CR>", mode = { "n", "t" }, desc = "Float Terminal" }
-    end,
-  },
-
-  {
-    "windwp/nvim-autopairs",
-    event = "VeryLazy",
-    dependencies = {
-      { "hrsh7th/nvim-cmp" },
-    },
-    opts = function(_, opts)
-      opts.check_ts = true
-      opts.ts_config = { java = false }
-      opts.fast_wrap = {
-        map = "<M-e>",
-        chars = { "{", "[", "(", '"', "'" },
-        pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-        offset = 0,
-        end_key = "$",
-        keys = "qwertyuiopzxcvbnmasdfghjkl",
-        check_comma = true,
-        highlight = "PmenuSel",
-        highlight_grey = "LineNr",
-      }
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      local cmp = require("cmp")
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-    end,
-  },
-  {
-    "numToStr/Comment.nvim",
-    dependencies = {
-      { "JoosepAlviste/nvim-ts-context-commentstring" },
-    },
-    keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
-    opts = function()
-      local commentstring_avail, commentstring = pcall(require, "ts_context_commentstring.integrations.comment_nvim")
-      return commentstring_avail and commentstring and { pre_hook = commentstring.create_pre_hook() } or {}
     end,
   },
 }
