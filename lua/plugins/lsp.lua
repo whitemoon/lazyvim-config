@@ -19,10 +19,10 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "help",
         "json",
         "lua",
         "luap",
+        "luadoc",
         "markdown",
         "markdown_inline",
         "regex",

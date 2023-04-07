@@ -5,6 +5,10 @@ return {
       opts.diagnostics.virtual_text = false
       opts.autoformat = false
       opts.servers = {
+        lua_ls = {
+          mason = false,
+          filetypes = { "lua" },
+        },
         rust_analyzer = {
           mason = false,
           filetypes = { "rust" },
