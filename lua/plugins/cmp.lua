@@ -5,6 +5,7 @@ return {
       {
         "Saecki/crates.nvim",
         event = { "BufRead Cargo.toml" },
+        opts = {},
       },
       {
         "delphinus/cmp-ctags",
@@ -62,7 +63,7 @@ return {
             cmp.select_prev_item()
           elseif luasnip.jumpable(-1) then
             luasnip.jump(-1)
-          elseif neogen.jumpable(true) then
+          elseif neogen.jumpable(-1) then
             neogen.jump_prev()
           else
             fallback()

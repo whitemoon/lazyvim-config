@@ -8,9 +8,7 @@ return {
       --Please make sure you install markdown and markdown_inline parser
       { "nvim-treesitter/nvim-treesitter" },
     },
-    config = function(_, opts)
-      require("lspsaga").setup(opts)
-    end,
+    opts = {},
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- LSP finder - Find the symbol's definition

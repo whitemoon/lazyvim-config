@@ -53,8 +53,6 @@ return {
         sources = {
           nls.builtins.formatting.prettierd,
           nls.builtins.formatting.stylua,
-          -- rust
-          nls.builtins.formatting.rustfmt,
           -- bash
           nls.builtins.formatting.shfmt,
           -- clang-format
