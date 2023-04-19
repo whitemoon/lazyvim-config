@@ -6,7 +6,7 @@ return {
     opts = function(_, opts)
       vim.g.neo_tree_remove_legacy_commands = true
       -- TODO move after neo-tree improves (https://github.com/nvim-neo-tree/neo-tree.nvim/issues/707)
-      local global_commands = {
+      opts.commands = {
         parent_or_close = function(state)
           local node = state.tree:get_node()
           if (node.type == "directory" or node:has_children()) and node:is_expanded() then
@@ -79,11 +79,7 @@ return {
         follow_current_file = true,
         hijack_netrw_behavior = "open_current",
         use_libuv_file_watcher = true,
-        commands = global_commands,
       }
-      opts.buffers = { commands = global_commands }
-      opts.git_status = { commands = global_commands }
-      opts.diagnostics = { commands = global_commands }
       opts.event_handlers = {
         {
           event = "neo_tree_buffer_enter",

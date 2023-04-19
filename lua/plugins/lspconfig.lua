@@ -17,7 +17,7 @@ return {
           filetypes = { "toml" },
         },
         bashls = {
-          filetypes = { "bash" },
+          filetypes = { "sh" },
         },
         clangd = {
           mason = false,

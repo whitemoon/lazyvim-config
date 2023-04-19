@@ -13,26 +13,6 @@ return {
       opts.dap = {
         adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
       }
-      opts.server = {
-        settings = {
-          ["rust-analyzer"] = {
-            cargo = {
-              allFeatures = true,
-              loadOutDirsFromCheck = true,
-              runBuildScripts = true,
-            },
-            -- Add clippy lints for Rust.
-            checkOnSave = {
-              allFeatures = true,
-              command = "clippy",
-              extraArgs = { "--no-deps" },
-            },
-            procMacro = {
-              enable = true,
-            },
-          },
-        },
-      }
     end,
   },
 }

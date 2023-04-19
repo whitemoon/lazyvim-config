@@ -23,18 +23,6 @@ return {
     },
   },
   {
-    "rebelot/kanagawa.nvim",
-    opts = function(_, opts)
-      opts.transparent = true
-    end,
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "kanagawa",
-    },
-  },
-  {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function(_, opts)
