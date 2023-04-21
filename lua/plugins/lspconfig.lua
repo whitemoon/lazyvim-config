@@ -27,6 +27,7 @@ return {
         ruff_lsp = {
           filetypes = { "python" },
         },
+        -- pylsp = require("plugins.extras.lang.pylsp"),
       }
       opts.setup = {}
     end,
