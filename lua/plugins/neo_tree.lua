@@ -2,10 +2,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
-    cmd = "Neotree",
     opts = function(_, opts)
-      vim.g.neo_tree_remove_legacy_commands = true
-      -- TODO move after neo-tree improves (https://github.com/nvim-neo-tree/neo-tree.nvim/issues/707)
       opts.commands = {
         parent_or_close = function(state)
           local node = state.tree:get_node()
@@ -75,40 +72,6 @@ return {
           Y = "copy_selector",
         },
       }
-      opts.filesystem = {
-        follow_current_file = true,
-        hijack_netrw_behavior = "open_current",
-        use_libuv_file_watcher = true,
-      }
-      opts.event_handlers = {
-        {
-          event = "neo_tree_buffer_enter",
-          handler = function(_)
-            vim.opt_local.signcolumn = "auto"
-          end,
-        },
-      }
     end,
-    keys = {
-      {
-        "<leader>fe",
-        function()
-          require("neo-tree.command").execute({
-            toggle = true,
-            dir = require("lazyvim.util").get_root(),
-          })
-        end,
-        desc = "Explorer NeoTree (root dir)",
-      },
-      {
-        "<leader>fE",
-        function()
-          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
-        end,
-        desc = "Explorer NeoTree (cwd)",
-      },
-      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-      { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
-    },
   },
 }
