@@ -9,8 +9,8 @@ return {
     python = {
       analysis = {
         typeCheckingMode = "off", -- off, basic, strict
-        autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
+        autoSearchPaths = false,
+        useLibraryCodeForTypes = false,
         autoImportCompletions = true,
         diagnosticMode = "workspace",
         -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md#type-check-diagnostics-settings

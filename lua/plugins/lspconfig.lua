@@ -23,11 +23,11 @@ return {
           mason = false,
           filetypes = { "c", "cpp" },
         },
-        pyright = require("plugins.extras.lang.pyright"),
-        ruff_lsp = {
-          filetypes = { "python" },
-        },
-        -- pylsp = require("plugins.extras.lang.pylsp"),
+        -- pyright = require("plugins.extras.lang.pyright"),
+        -- ruff_lsp = {
+        --   filetypes = { "python" },
+        -- },
+        pylsp = require("plugins.extras.lang.pylsp"),
       }
       opts.setup = {}
     end,

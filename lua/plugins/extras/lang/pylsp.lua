@@ -8,6 +8,9 @@ return {
           enabled = true,
           extendSelect = { "I" },
         },
+        rope_autoimport = {
+          enabled = true,
+        },
       },
     },
   },
