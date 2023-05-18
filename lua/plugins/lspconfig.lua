@@ -17,6 +17,7 @@ return {
         },
         pyright = require("plugins.extras.lang.pyright"),
         ruff_lsp = {
+          mason = false,
           filetypes = { "python" },
         },
         -- pylsp = require("plugins.extras.lang.pylsp"),
