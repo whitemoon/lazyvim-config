@@ -79,7 +79,7 @@ return {
 
       local sources = {
         { name = "crates" },
-        { name = "cmp_ctags" },
+        { name = "ctags" },
       }
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, sources))
     end,

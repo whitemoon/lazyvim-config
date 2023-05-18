@@ -11,6 +11,9 @@ return {
         rope_autoimport = {
           enabled = true,
         },
+        rope = {
+          enabled = true,
+        },
       },
     },
   },
