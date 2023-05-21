@@ -139,7 +139,7 @@ syn match mdCancelMark "- X" contained containedin=mdCancelledTask conceal cchar
 syn match mdContext "@[^ ]*" containedin=ALL
 
 " syn match mdItem "^ *[\*-]\( X \| \[[x ]\]\)\@! " contains=mdBullet
-syn match mdItem "^ *[\*-] .*$" contains=mdBullet
+syn match mdItem "^\s*[\*-] [^\*-]+$" contains=mdBullet
 syn match mdBullet "[\*-]" contained containedin=mdItem conceal cchar=●
 syn region mdIgnore start="\S\@<=\$\|\$\S\@=" end="\S\@<=\$\|\$\S\@=" keepend oneline concealends
 
