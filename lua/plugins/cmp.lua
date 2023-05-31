@@ -13,9 +13,6 @@ return {
         event = { "BufRead Cargo.toml" },
         opts = {},
       },
-      {
-        "delphinus/cmp-ctags",
-      },
     },
     opts = function(_, opts)
       local has_words_before = function()
@@ -79,7 +76,6 @@ return {
 
       local sources = {
         { name = "crates" },
-        { name = "ctags" },
       }
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, sources))
     end,
