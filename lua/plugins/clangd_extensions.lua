@@ -9,6 +9,7 @@ return {
     opts = function(_, opts)
       opts.server = { capabilities = { offsetEncoding = { "utf-16" } } }
       opts.extensions = {
+        autoSetHints = false,
         ast = {
           --These require codicons (https://github.com/microsoft/vscode-codicons)
           role_icons = {
