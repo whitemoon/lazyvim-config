@@ -22,13 +22,6 @@ return {
             require("rust-tools").hover_actions.hover_actions,
             { buffer = bufnr, desc = "Rust - Hover actions" }
           )
-          -- Code actions
-          vim.keymap.set(
-            "n",
-            "ga",
-            require("rust-tools").code_action_group.code_action_group,
-            { buffer = bufnr, desc = "Rust - Code actions" }
-          )
         end,
         settings = {
           ["rust-analyzer"] = {
@@ -38,6 +31,7 @@ return {
           },
         },
       }
+      opts.tools = { inlay_hints = { auto = false } }
     end,
   },
 }
