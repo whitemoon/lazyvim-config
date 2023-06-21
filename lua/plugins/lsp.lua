@@ -28,6 +28,7 @@ return {
         "regex",
         "vim",
         "yaml",
+        "ron",
 
         -- rust
         "rust",
