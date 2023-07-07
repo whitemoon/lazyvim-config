@@ -9,82 +9,81 @@ return {
       { "nvim-treesitter/nvim-treesitter" },
     },
     opts = {},
-    init = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+    keys = {
       -- LSP finder - Find the symbol's definition
       -- If there is no definition, it will instead be hidden
       -- When you use an action in finder like "open vsplit",
       -- you can use <C-t> to jump back
-      keys[#keys + 1] = { "gh", "<cmd>Lspsaga lsp_finder<CR>", mode = "n", desc = "Lsp Finder" }
+      { "gh", "<cmd>Lspsaga lsp_finder<CR>", mode = "n", desc = "Lsp Finder" },
 
       -- Code action
-      keys[#keys + 1] = { "ga", "<cmd>Lspsaga code_action<CR>", mode = { "n", "v" }, desc = "Code Action" }
+      { "ga", "<cmd>Lspsaga code_action<CR>", mode = { "n", "v" }, desc = "Code Action" },
 
       -- Rename all occurrences of the hovered word for the selected files
-      keys[#keys + 1] = { "gr", "<cmd>Lspsaga rename ++project<CR>", mode = "n", desc = "Lsp Rename" }
+      { "gr", "<cmd>Lspsaga rename ++project<CR>", mode = "n", desc = "Lsp Rename" },
 
       -- Peek definition
       -- You can edit the file containing the definition in the floating window
       -- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
       -- It also supports tagstack
       -- Use <C-t> to jump back
-      keys[#keys + 1] = { "gd", "<cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "Peek Definition" }
-      keys[#keys + 1] = { "gD", "<cmd>Lspsaga goto_definition<CR>", mode = "n", desc = "Goto Definition" }
+      { "gd", "<cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "Peek Definition" },
+      { "gD", "<cmd>Lspsaga goto_definition<CR>", mode = "n", desc = "Goto Definition" },
 
       -- Peek type definition
       -- You can edit the file containing the type definition in the floating window
       -- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
       -- It also supports tagstack
       -- Use <C-t> to jump back
-      keys[#keys + 1] = { "gt", "<cmd>Lspsaga peek_type_definition<CR>", mode = "n", desc = "Peek Type Definition" }
+      { "gt", "<cmd>Lspsaga peek_type_definition<CR>", mode = "n", desc = "Peek Type Definition" },
 
       -- Show line diagnostics
       -- You can pass argument ++unfocus to
       -- unfocus the show_line_diagnostics floating window
-      keys[#keys + 1] = { "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", mode = "n", desc = "Show Line Diagnostic" }
+      { "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", mode = "n", desc = "Show Line Diagnostic" },
 
       -- Show buffer diagnostics
-      keys[#keys + 1] = { "gL", "<cmd>Lspsaga show_buf_diagnostics<CR>", mode = "n", desc = "Show Buf Diagnostics" }
+      { "gL", "<cmd>Lspsaga show_buf_diagnostics<CR>", mode = "n", desc = "Show Buf Diagnostics" },
 
       -- Diagnostic jump
       -- You can use <C-o> to jump back to your previous location
-      keys[#keys + 1] = { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", mode = "n", desc = "Jump Prev Diagnostic" }
-      keys[#keys + 1] = { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", mode = "n", desc = "Jump Next Diagnostic" }
+      { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", mode = "n", desc = "Jump Prev Diagnostic" },
+      { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", mode = "n", desc = "Jump Next Diagnostic" },
 
       -- Diagnostic jump with filters such as only jumping to an error
-      keys[#keys + 1] = {
+      {
         "[E",
         function()
           require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
         end,
         mode = "n",
         desc = "Jump Prev ERROR Diagnostic",
-      }
-      keys[#keys + 1] = {
+      },
+      {
         "]E",
         function()
           require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
         end,
         mode = "n",
         desc = "Jump Next ERROR Diagnostic",
-      }
+      },
 
       -- Toggle outline
-      keys[#keys + 1] = { "go", "<cmd>Lspsaga outline<CR>", mode = "n", desc = "OutLine" }
+      { "go", "<cmd>Lspsaga outline<CR>", mode = "n", desc = "OutLine" },
 
       -- If you want to keep the hover window in the top right hand corner,
       -- you can pass the ++keep argument
       -- Note that if you use hover with ++keep, pressing this key again will
       -- close the hover window. If you want to jump to the hover window
       -- you should use the wincmd command "<C-w>w"
-      keys[#keys + 1] = { "K", "<cmd>Lspsaga hover_doc<CR>", mode = "n", desc = "Hover Doc" }
+      { "K", "<cmd>Lspsaga hover_doc<CR>", mode = "n", desc = "Hover Doc" },
 
       -- Call hierarchy
-      keys[#keys + 1] = { "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", mode = "n", desc = "Call Incoming" }
-      keys[#keys + 1] = { "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", mode = "n", desc = "Call Outgoing" }
+      { "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", mode = "n", desc = "Call Incoming" },
+      { "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", mode = "n", desc = "Call Outgoing" },
 
       -- Floating terminal
-      keys[#keys + 1] = { "<Leader>ot", "<cmd>Lspsaga term_toggle<CR>", mode = { "n", "t" }, desc = "Float Terminal" }
-    end,
+      { "<Leader>ot", "<cmd>Lspsaga term_toggle<CR>", mode = { "n", "t" }, desc = "Float Terminal" },
+    },
   },
 }

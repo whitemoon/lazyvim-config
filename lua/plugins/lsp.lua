@@ -5,9 +5,6 @@ return {
       ensure_installed = {
         "stylua",
         "prettierd",
-
-        -- debug
-        "codelldb",
       },
       github = {
         download_url_template = "https://ghproxy.com/https://github.com/%s/releases/download/%s/%s",
@@ -28,18 +25,9 @@ return {
         "regex",
         "vim",
         "yaml",
-        "ron",
 
-        -- rust
-        "rust",
-        "toml",
         -- bash
         "bash",
-        -- c/cpp
-        "c",
-        "cpp",
-        -- python
-        "python",
       },
     },
   },

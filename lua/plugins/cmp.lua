@@ -7,13 +7,6 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    dependencies = {
-      {
-        "Saecki/crates.nvim",
-        event = { "BufRead Cargo.toml" },
-        opts = {},
-      },
-    },
     opts = function(_, opts)
       local has_words_before = function()
         unpack = unpack or table.unpack
@@ -29,10 +22,10 @@ return {
       opts.sorting = {
         priority_weight = 2,
         comparators = {
+          compare.recently_used,
           compare.offset,
           compare.exact,
           compare.score,
-          compare.recently_used,
           compare.locality,
           compare.kind,
           compare.length,
@@ -73,11 +66,6 @@ return {
           end
         end, { "i", "s" }),
       })
-
-      local sources = {
-        { name = "crates" },
-      }
-      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, sources))
     end,
   },
 }

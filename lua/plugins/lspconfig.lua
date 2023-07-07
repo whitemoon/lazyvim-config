@@ -1,28 +1,35 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      opts.diagnostics.virtual_text = false
-      opts.autoformat = false
-      opts.servers = {
+    opts = {
+      diagnostics = { virtual_text = false },
+      autoformat = false,
+      servers = {
         lua_ls = {
           mason = false,
           filetypes = { "lua" },
         },
-        taplo = {
-          filetypes = { "toml" },
+        rust_analyzer = {
+          mason = false,
+          filetypes = { "rust" },
+        },
+        clangd = {
+          mason = false,
+          filetypes = { "c", "cpp" },
         },
         bashls = {
           filetypes = { "sh" },
         },
-        pyright = require("plugins.extras.lang.pyright"),
+        pyright = {
+          mason = false,
+          filetypes = { "python" },
+        },
         ruff_lsp = {
           mason = false,
           filetypes = { "python" },
         },
         -- pylsp = require("plugins.extras.lang.pylsp"),
-      }
-      opts.setup = {}
-    end,
+      },
+    },
   },
 }
