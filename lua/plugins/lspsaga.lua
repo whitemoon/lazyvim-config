@@ -1,6 +1,6 @@
 return {
   {
-    "glepnir/lspsaga.nvim",
+    "nvimdev/lspsaga.nvim",
     event = "LspAttach",
     cmd = { "Lspsaga" },
     dependencies = {
@@ -9,33 +9,40 @@ return {
       { "nvim-treesitter/nvim-treesitter" },
     },
     opts = {},
+    init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      keys[#keys + 1] = { "K", false }
+      keys[#keys + 1] = { "gd", false }
+      keys[#keys + 1] = { "gD", false }
+      keys[#keys + 1] = { "gr", false }
+    end,
     keys = {
       -- LSP finder - Find the symbol's definition
       -- If there is no definition, it will instead be hidden
       -- When you use an action in finder like "open vsplit",
       -- you can use <C-t> to jump back
-      { "gh", "<cmd>Lspsaga lsp_finder<CR>", mode = "n", desc = "Lsp Finder" },
+      { "gh", "<cmd>Lspsaga finder<CR>", mode = "n", desc = "Lsp Finder" },
 
       -- Code action
       { "ga", "<cmd>Lspsaga code_action<CR>", mode = { "n", "v" }, desc = "Code Action" },
 
       -- Rename all occurrences of the hovered word for the selected files
-      { "gr", "<cmd>Lspsaga rename ++project<CR>", mode = "n", desc = "Lsp Rename" },
+      { "gr", "<cmd>Lspsaga lsp_rename ++project<CR>", mode = "n", desc = "Lsp Rename" },
 
       -- Peek definition
       -- You can edit the file containing the definition in the floating window
       -- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
       -- It also supports tagstack
       -- Use <C-t> to jump back
-      { "gd", "<cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "Peek Definition" },
-      { "gD", "<cmd>Lspsaga goto_definition<CR>", mode = "n", desc = "Goto Definition" },
+      { "gpd", "<cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "Peek Definition" },
+      { "gd", "<cmd>Lspsaga goto_definition<CR>", mode = "n", desc = "Goto Definition" },
 
       -- Peek type definition
       -- You can edit the file containing the type definition in the floating window
       -- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
       -- It also supports tagstack
       -- Use <C-t> to jump back
-      { "gt", "<cmd>Lspsaga peek_type_definition<CR>", mode = "n", desc = "Peek Type Definition" },
+      { "gpt", "<cmd>Lspsaga peek_type_definition<CR>", mode = "n", desc = "Peek Type Definition" },
 
       -- Show line diagnostics
       -- You can pass argument ++unfocus to

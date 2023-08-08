@@ -8,3 +8,21 @@ vim.keymap.set("i", "jk", "<esc>")
 
 -- search for visual mode selected
 vim.keymap.set("v", "/", 'y/<c-r>"<cr>')
+
+-- gitui
+local Util = require("lazyvim.util")
+vim.keymap.set("n", "<leader>gg", function()
+  Util.float_term({ "gitui" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false })
+end, { desc = "Gitui (root dir)" })
+vim.keymap.set("n", "<leader>gG", function()
+  Util.float_term({ "gitui" }, { esc_esc = false, ctrl_hjkl = false })
+end, { desc = "Gitui (cwd)" })
+
+if vim.g.neovide then
+  vim.keymap.set("v", "<C-x>", '"+d') -- cut
+  vim.keymap.set("v", "<C-c>", '"+y') -- copy
+  vim.keymap.set("i", "<C-v>", "<C-r><C-o>+") -- paste insert mode
+  vim.keymap.set("n", "<C-v>", 'm0"+P`]m`v`0=``') -- paste normal mode
+  vim.keymap.set("v", "<C-v>", '"+P`]') -- paste visual mode
+  vim.keymap.set("c", "<C-v>", "<C-r>+") -- paste command mode
+end
