@@ -6,6 +6,14 @@ return {
     },
   },
   {
+    "folke/which-key.nvim",
+    opts = {
+      window = {
+        winblend = 60,
+      },
+    },
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {

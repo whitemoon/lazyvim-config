@@ -5,10 +5,6 @@ return {
       diagnostics = { virtual_text = false },
       autoformat = false,
       servers = {
-        lua_ls = {
-          mason = false,
-          filetypes = { "lua" },
-        },
         rust_analyzer = {
           mason = false,
           filetypes = { "rust" },

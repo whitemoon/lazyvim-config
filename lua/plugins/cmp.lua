@@ -17,21 +17,6 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
       local neogen = require("neogen")
-      local compare = cmp.config.compare
-
-      opts.sorting = {
-        priority_weight = 2,
-        comparators = {
-          compare.recently_used,
-          compare.offset,
-          compare.exact,
-          compare.score,
-          compare.locality,
-          compare.kind,
-          compare.length,
-          compare.order,
-        },
-      }
 
       opts.mapping = vim.tbl_deep_extend("force", opts.mapping, {
         ["<CR>"] = cmp.mapping.confirm({
