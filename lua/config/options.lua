@@ -11,21 +11,16 @@ vim.opt.cursorcolumn = true
 vim.opt.shiftwidth = 4 -- Size of an indent
 vim.opt.tabstop = 4 -- Number of spaces tabs count for
 
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
--- transparent popupmenu and float window
-vim.o.winblend = 60
-vim.o.pumblend = 60
-
 -- vim.o.background = "light"
 vim.o.termguicolors = true
 
 if vim.g.neovide then
   vim.o.guifont = "Iosevka Nerd Font Mono:h15"
   vim.g.neovide_transparency = 0.8
+  -- transparent popupmenu and float window
+  -- vim.o.winblend = 80
+  -- vim.o.pumblend = 80
+
   -- vim.g.neovide_cursor_vfx_mode = "sonicboom"
   vim.g.neovide_cursor_vfx_mode = "ripple"
   vim.g.neovide_underline_automatic_scaling = true

@@ -27,22 +27,22 @@ return {
       { "ga", "<cmd>Lspsaga code_action<CR>", mode = { "n", "v" }, desc = "Code Action" },
 
       -- Rename all occurrences of the hovered word for the selected files
-      { "gr", "<cmd>Lspsaga lsp_rename ++project<CR>", mode = "n", desc = "Lsp Rename" },
+      { "gr", "<cmd>Lspsaga rename ++project<CR>", mode = "n", desc = "Lsp Rename" },
 
       -- Peek definition
       -- You can edit the file containing the definition in the floating window
       -- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
       -- It also supports tagstack
       -- Use <C-t> to jump back
-      { "gpd", "<cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "Peek Definition" },
-      { "gd", "<cmd>Lspsaga goto_definition<CR>", mode = "n", desc = "Goto Definition" },
+      { "gd", "<cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "Peek Definition" },
+      { "gD", "<cmd>Lspsaga goto_definition<CR>", mode = "n", desc = "Goto Definition" },
 
       -- Peek type definition
       -- You can edit the file containing the type definition in the floating window
       -- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
       -- It also supports tagstack
       -- Use <C-t> to jump back
-      { "gpt", "<cmd>Lspsaga peek_type_definition<CR>", mode = "n", desc = "Peek Type Definition" },
+      { "gt", "<cmd>Lspsaga peek_type_definition<CR>", mode = "n", desc = "Peek Type Definition" },
 
       -- Show line diagnostics
       -- You can pass argument ++unfocus to

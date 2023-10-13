@@ -1,6 +1,7 @@
 return {
   {
     "michaelb/sniprun",
+    event = "VeryLazy",
     build = "bash ./install.sh",
     cmd = { "SnipRun" },
     opts = {

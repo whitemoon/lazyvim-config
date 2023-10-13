@@ -4,6 +4,7 @@ return {
     dependencies = {
       { "JoosepAlviste/nvim-ts-context-commentstring" },
     },
+    event = "VeryLazy",
     keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
     opts = function()
       local commentstring_avail, commentstring = pcall(require, "ts_context_commentstring.integrations.comment_nvim")

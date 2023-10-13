@@ -2,29 +2,14 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      diagnostics = { virtual_text = false },
-      autoformat = false,
+      diagnostics = { virtual_text = { prefix = "icons" } },
+      inlay_hints = {
+        enabled = vim.fn.has("nvim-0.10"),
+      },
       servers = {
-        rust_analyzer = {
-          mason = false,
-          filetypes = { "rust" },
-        },
-        clangd = {
-          mason = false,
-          filetypes = { "c", "cpp" },
-        },
         bashls = {
           filetypes = { "sh" },
         },
-        pyright = {
-          mason = false,
-          filetypes = { "python" },
-        },
-        ruff_lsp = {
-          mason = false,
-          filetypes = { "python" },
-        },
-        -- pylsp = require("plugins.extras.lang.pylsp"),
       },
     },
   },

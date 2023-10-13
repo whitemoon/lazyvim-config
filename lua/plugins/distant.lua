@@ -1,6 +1,10 @@
 return {
   {
     "chipsenkbeil/distant.nvim",
-    opts = {},
+    event = "VeryLazy",
+    branch = "v0.3",
+    config = function()
+      require("distant"):setup()
+    end,
   },
 }
