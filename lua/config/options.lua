@@ -5,6 +5,8 @@
 -- parser gbk file
 vim.opt.fileencodings = "utf-8,gbk"
 
+vim.g.autoformat = false
+
 vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve-r-cr-o:hor20,a:blinkon100"
 vim.opt.cursorcolumn = true
 
@@ -16,7 +18,7 @@ vim.o.termguicolors = true
 
 if vim.g.neovide then
   vim.o.guifont = "Iosevka Nerd Font Mono:h15"
-  vim.g.neovide_transparency = 0.8
+  vim.g.neovide_transparency = 0.9
   -- transparent popupmenu and float window
   -- vim.o.winblend = 80
   -- vim.o.pumblend = 80

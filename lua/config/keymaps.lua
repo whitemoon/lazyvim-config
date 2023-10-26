@@ -2,8 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-vim.keymap.set({ "i", "n" }, "<c-a>", "<Home>")
-vim.keymap.set({ "i", "n" }, "<c-e>", "<End>")
+-- vim.keymap.set({ "i", "n" }, "<c-a>", "<Home>")
+-- vim.keymap.set({ "i", "n" }, "<c-e>", "<End>")
 vim.keymap.set("i", "jk", "<esc>")
 
 -- search for visual mode selected
@@ -12,10 +12,10 @@ vim.keymap.set("v", "/", 'y/<c-r>"<cr>')
 -- gitui
 local Util = require("lazyvim.util")
 vim.keymap.set("n", "<leader>gg", function()
-  Util.float_term({ "gitui" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false })
+  Util.terminal({ "gitui" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false })
 end, { desc = "Gitui (root dir)" })
 vim.keymap.set("n", "<leader>gG", function()
-  Util.float_term({ "gitui" }, { esc_esc = false, ctrl_hjkl = false })
+  Util.terminal({ "gitui" }, { esc_esc = false, ctrl_hjkl = false })
 end, { desc = "Gitui (cwd)" })
 
 if vim.g.neovide then

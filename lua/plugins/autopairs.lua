@@ -1,13 +1,12 @@
 return {
   {
-    "altermo/ultimate-autopair.nvim",
-    branch = "development",
-    event = { "InsertEnter", "CmdlineEnter" },
-    opts = {
-      space2 = { enable = true },
-      bs = { space = "balance", indent_ignore = true, single_delete = true },
-      cr = { autoclose = true },
-      tabout = { enable = true, hopout = true },
-    },
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = function(_, opts)
+      local cmp_status_ok, cmp = pcall(require, "cmp")
+      if cmp_status_ok then
+        cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done({ tex = false }))
+      end
+    end,
   },
 }

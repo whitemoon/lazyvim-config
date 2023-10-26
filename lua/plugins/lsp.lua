@@ -19,14 +19,12 @@ return {
   -- },
 
   {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = opts.sources or {}
-      vim.list_extend(opts.sources, {
-        -- clang-format
-        nls.builtins.formatting.clang_format,
-      })
-    end,
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        ["c"] = { "clang_format" },
+        ["cpp"] = { "clang_format" },
+      },
+    },
   },
 }
