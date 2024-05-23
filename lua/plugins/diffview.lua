@@ -1,7 +1,7 @@
 return {
   {
     "sindrets/diffview.nvim",
-    event = "VeryLazy",
+    lazy = true,
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewRefresh", "DiffviewFileHistory" },
     opts = {},
     init = function()

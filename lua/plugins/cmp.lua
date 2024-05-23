@@ -1,12 +1,7 @@
 return {
   {
-    "L3MON4D3/LuaSnip",
-    keys = function()
-      return {}
-    end,
-  },
-  {
     "hrsh7th/nvim-cmp",
+    dependencies = { "lukas-reineke/cmp-rg" },
     opts = function(_, opts)
       local has_words_before = function()
         unpack = unpack or table.unpack
@@ -14,43 +9,35 @@ return {
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
 
-      local luasnip = require("luasnip")
       local cmp = require("cmp")
-      local neogen = require("neogen")
 
-      opts.mapping = vim.tbl_deep_extend("force", opts.mapping, {
-        ["<CR>"] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-            -- they way you will only jump inside the snippet region
-            -- elseif luasnip.expand_or_jumpable() then
-          elseif luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
-          elseif neogen.jumpable() then
-            neogen.jump_next()
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          elseif neogen.jumpable(-1) then
-            neogen.jump_prev()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      })
+      opts.mapping["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
+          cmp.select_next_item()
+        elseif vim.snippet.active({ direction = 1 }) then
+          vim.schedule(function()
+            vim.snippet.jump(1)
+          end)
+        elseif has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end, { "i", "s" })
+      opts.mapping["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif vim.snippet.active({ direction = -1 }) then
+          vim.schedule(function()
+            vim.snippet.jump(-1)
+          end)
+        else
+          fallback()
+        end
+      end, { "i", "s" })
+
+      table.insert(opts.sources, { name = "rg" })
     end,
   },
 }
