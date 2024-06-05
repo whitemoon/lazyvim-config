@@ -11,8 +11,10 @@ return {
         bashls = {
           filetypes = { "sh" },
         },
-        rust_analyzer = {
-          mason = false,
+        basedpyright = {
+          settings = {
+            basedpyright = { typeCheckingMode = "basic" },
+          },
         },
         clangd = {
           root_dir = function(fname)
@@ -20,6 +22,7 @@ return {
               "xmake.lua",
               ".vscode",
               ".clangd",
+              "CMakeLists.txt",
               ".git"
               -- "Makefile",
               -- "configure.ac",
