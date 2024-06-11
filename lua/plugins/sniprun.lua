@@ -24,13 +24,8 @@ return {
       borders = "single", -- " display borders around floating windows
       -- " possible values are 'none', 'single', 'double', or 'shadow'
     },
-    init = function()
-      require("which-key").register({
-        mode = { "n", "v" },
-        ["<leader>r"] = { name = "+run" },
-      })
-    end,
     keys = {
+      { "<leader>r", "", mode = { "n", "v" }, desc = "+run" },
       {
         "<leader>rr",
         function()

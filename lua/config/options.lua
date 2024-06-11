@@ -22,17 +22,17 @@ vim.opt.diffopt:append({ "algorithm:histogram", "linematch:60" }) -- enable line
 vim.g.lazyvim_python_lsp = "basedpyright"
 
 if vim.g.neovide then
-  vim.o.guifont = "GeistMono Nerd Font:h15"
-  vim.g.neovide_refresh_rate = 75
-  vim.g.neovide_transparency = 0.9
+  vim.o.guifont = "ComicShannsMono Nerd Font:h15"
+  -- vim.g.neovide_refresh_rate = 75
+  -- vim.g.neovide_transparency = 0.9
   -- transparent popupmenu and float window
   -- vim.o.winblend = 80
   -- vim.o.pumblend = 80
 
   -- vim.g.neovide_cursor_vfx_mode = "sonicboom"
   vim.g.neovide_cursor_vfx_mode = "ripple"
-  vim.g.neovide_underline_automatic_scaling = true
-  vim.g.neovide_hide_mouse_when_typing = true
+  -- vim.g.neovide_underline_automatic_scaling = true
+  -- vim.g.neovide_hide_mouse_when_typing = true
   -- vim.g.neovide_floating_blur_amount_x = 2.0
   -- vim.g.neovide_floating_blur_amount_y = 2.0
   -- vim.g.neovide_scroll_animation_length = 0.3

@@ -4,12 +4,8 @@ return {
     lazy = true,
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewRefresh", "DiffviewFileHistory" },
     opts = {},
-    init = function()
-      require("which-key").register({
-        ["<leader>gd"] = { name = "+diffview" },
-      })
-    end,
     keys = {
+      { "<leader>gd", "", desc = "+diffview" },
       {
         mode = { "n" },
         "<Leader>gdo",

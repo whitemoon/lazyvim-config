@@ -1,7 +1,6 @@
 return {
   {
     "hrsh7th/nvim-cmp",
-    dependencies = { "lukas-reineke/cmp-rg" },
     opts = function(_, opts)
       local has_words_before = function()
         unpack = unpack or table.unpack
@@ -36,8 +35,6 @@ return {
           fallback()
         end
       end, { "i", "s" })
-
-      table.insert(opts.sources, { name = "rg" })
     end,
   },
 }
